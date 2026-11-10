@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Made & Found | Handmade Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#"><span class="brand-mark">m.</span><span>made <i>&</i> found</span></a>
+    <nav class="main-nav">
+      <a href="#shop">Shop</a><a href="#story">Our story</a><a href="#sell">Sell with us</a>
+    </nav>
+    <div class="header-actions">
+      <button class="text-button" id="accountBtn">Sign in</button>
+      <button class="cart-button" id="cartBtn">Bag <span id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Small things. Made with care.</p>
+        <h1>Find something<br><em>made by hand.</em></h1>
+        <p class="hero-text">A thoughtful collection of useful, beautiful objects made by independent creators.</p>
+        <a class="primary-button" href="#shop">Explore the collection <span>↗</span></a>
+        <div class="hero-note"><span class="note-line"></span> Good things take time — and skilled hands.</div>
+      </div>
+      <div class="hero-art" aria-label="Handmade pottery and craft objects">
+        <div class="art-circle"></div>
+        <div class="art-card art-card-one"><div class="vase"></div><span>Clay, shaped slowly</span></div>
+        <div class="art-card art-card-two"><div class="woven"></div><span>Made to be kept</span></div>
+        <div class="art-stamp">OBJECTS<br>WITH A<br>STORY</div>
+      </div>
+    </section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">The marketplace</p><h2>Browse the good stuff<span>.</span></h2></div>
+        <p class="section-side">One-of-a-kind finds, made in small batches.</p>
+      </div>
+
+      <div class="shop-tools">
+        <div class="category-list" id="categoryList">
+          <button class="category active" data-category="All">All pieces</button>
+          <button class="category" data-category="Home">Home</button>
+          <button class="category" data-category="Accessories">Accessories</button>
+          <button class="category" data-category="Art">Art & paper</button>
+          <button class="category" data-category="Wearables">Wearables</button>
+        </div>
+        <div class="filters">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search handmade pieces"></label>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: Low to high</option>
+            <option value="high">Price: High to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result-line"><span id="resultCount">8 pieces</span><span>Made slowly, loved for longer.</span></div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="story-section" id="story">
+      <div class="story-image"><div class="story-shape"></div><span>THE HUMAN<br>TOUCH</span></div>
+      <div class="story-copy"><p class="eyebrow">More than a marketplace</p><h2>Made by people.<br><em>Chosen by you.</em></h2>
+        <p>We bring independent makers and curious shoppers together. Every piece has a maker behind it, a process behind it, and a story worth sharing.</p>
+        <a class="underlined-link" href="#sell">Meet the maker community ↗</a>
+      </div>
+    </section>
+
+    <section class="sell-section" id="sell">
+      <div><p class="eyebrow">For makers</p><h2>Your craft deserves<br>a place to be found.</h2><p>Have something handmade? Add a piece to the collection and let people discover your work.</p></div>
+      <form id="productForm" class="maker-form">
+        <h3>List a new piece</h3>
+        <label>Product name<input id="newName" required maxlength="45" placeholder="e.g. Speckled ceramic mug"></label>
+        <div class="form-row">
+          <label>Price (₹)<input id="newPrice" type="number" min="1" required placeholder="650"></label>
+          <label>Category<select id="newCategory"><option>Home</option><option>Accessories</option><option>Art</option><option>Wearables</option></select></label>
+        </div>
+        <label>Short description<input id="newDescription" required maxlength="90" placeholder="A little detail about your work"></label>
+        <button class="primary-button form-submit" type="submit">Add to marketplace <span>↗</span></button>
+        <p class="form-hint">Demo seller tool — your listing is saved in this browser.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">m.</span><span>made <i>&</i> found</span></a><p>Independent makers. Everyday treasures.</p><span>© 2026 Made & Found</span></footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-panel" id="cartPanel">
+    <div class="panel-heading"><div><p class="eyebrow">Your selection</p><h2>Your bag</h2></div><button class="close-button" id="closeCart">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom"><div class="total-line"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div><button class="primary-button checkout-button" id="checkoutBtn">Continue to checkout ↗</button><p>Shipping is calculated at checkout.</p></div>
+  </aside>
+
+  <div class="modal" id="accountModal">
+    <button class="close-button modal-close" id="closeAccount">×</button>
+    <p class="eyebrow">Welcome to the community</p><h2>Sign in / Join</h2>
+    <p class="modal-intro">Use a name and email to create a local demo account.</p>
+    <form id="accountForm"><label>Your name<input id="userName" required placeholder="Your name"></label><label>Email address<input id="userEmail" type="email" required placeholder="you@example.com"></label><button class="primary-button" type="submit">Continue ↗</button></form>
+  </div>
+
+  <div class="modal product-modal" id="productModal">
+    <button class="close-button modal-close" id="closeProduct">×</button>
+    <div id="productDetail"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</body>
+</html>
